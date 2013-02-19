@@ -15,9 +15,13 @@ public class LoggedInActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_logged_in);
+		
+		// get username and count from calling intent (main screen)
 		Bundle extras = this.getIntent().getExtras();
 		String user = extras.getString("user");
 		int count = extras.getInt("count");
+		
+		// display welcome message for this user and log in count
 		String msg = "Welcome " + user + "\n" + "You have logged in " + count + " times.";
 		welcome = (TextView)findViewById(R.id.welcome);
 		welcome.setText(msg);
@@ -31,6 +35,7 @@ public class LoggedInActivity extends Activity {
 	}
 	
 	public void logout(View v) {
+		// when logout button clicked, go back to main screen
 		Intent i = new Intent(this, MainActivity.class);
 		startActivity(i);
 	}
